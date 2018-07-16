@@ -82,8 +82,8 @@
             this.btnContent.ColorSkin.NomalColor = System.Drawing.SystemColors.WindowText;
             this.btnContent.ForeColor = System.Drawing.SystemColors.MenuText;
             this.btnContent.GroupNum = 0;
-            this.btnContent.IconSkin.IconPoint = new System.Drawing.Point(0, 0);
-            this.btnContent.IconSkin.IconSize = 17;
+            this.btnContent.IconSkin.IconPoint = new System.Drawing.Point(2, 1);
+            this.btnContent.IconSkin.IconSize = 16;
             this.btnContent.IconSkin.IconString = "0xf0d7";
             this.btnContent.KeepPressColor = false;
             this.btnContent.Location = new System.Drawing.Point(119, 5);

@@ -6,11 +6,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Drawing.Design;
 
 namespace ControlLibrary
 {
     [DefaultEvent("RightBtnClick")]
-    public partial class TextBoxBtnEx : UserControl
+    [DesignerAttribute(typeof(UserControlDesigner))]
+    public partial class TextBoxBtnEx : UserControlEx
     {
         // Fields
         private BorderSkin _borderSkin;
@@ -69,8 +71,6 @@ namespace ControlLibrary
         public ButtonEx BtnContent { get { return btnContent; } }
         [Category("自定义"), Description("颜色样式"), Browsable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public ColorSkin ColorSkin { get { return this.btnContent.ColorSkin; } }
-        [Category("自定义"), Description("文本内容框属性"), Browsable(false)]
-        public TextBox TextContent { get { return txtContent; } }
         [Category("自定义"), Description("指示是否能够编辑控件中的文本"), Browsable(true)]
         public bool ReadOnly
         {
@@ -114,11 +114,12 @@ namespace ControlLibrary
             }
         }
         [Category("自定义"), Description("与控件关联的文本"), Browsable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Localizable(true), Editor("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
         public override string Text
         {
             get
             {
-                return this.txtContent.Text;
+                return txtContent.Text;
             }
             set
             {
@@ -188,6 +189,30 @@ namespace ControlLibrary
             get
             {
                 return this.txtContent.Focused;
+            }
+        }
+        [Category("自定义"), Description("获取或设置文本框中选定的文本起始点"), Browsable(false)]
+        public int SelectionStart
+        {
+            get
+            {
+                return this.txtContent.SelectionStart; ;
+            }
+            set
+            {
+                txtContent.SelectionStart = value;
+            }
+        }
+        [Category("自定义"), Description("获取或设置文本框中选定的字符数"), Browsable(false)]
+        public int SelectionLength
+        {
+            get
+            {
+                return this.txtContent.SelectionLength; ;
+            }
+            set
+            {
+                txtContent.SelectionLength = value;
             }
         }
     }

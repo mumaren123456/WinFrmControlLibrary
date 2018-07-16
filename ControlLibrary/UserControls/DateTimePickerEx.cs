@@ -159,29 +159,5 @@ namespace ControlLibrary
                 this.datePickerHead.CalendarTrailingForeColor = value;
             }
         }
-
-        [Category("自定义"), Description("用于显示控件背景色"), Browsable(false)]
-        public override Color BackColor
-        {
-            get
-            {
-                return base.BackColor;
-            }
-            set
-            {
-                this.datePickerHead.BackColor= base.BackColor = value;
-            }
-        }
-        public override Color ForeColor
-        {
-            get
-            {
-                return base.ForeColor;
-            }
-            set
-            {
-                this.datePickerHead.ForeColor = base.ForeColor = value;
-            }
-        }
     }
 }

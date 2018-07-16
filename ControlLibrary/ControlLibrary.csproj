@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -43,18 +44,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\CommonHelper.cs" />
+    <Compile Include="ControlDesigner\UserControlDesigner.cs" />
     <Compile Include="Control\ButtonEx.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Control\DatePickerHead.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Control\UserControlEx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Control\PanelEx.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Control\ToolScriptListBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Module\CurtomFormatEnum.cs" />
     <Compile Include="Module\DropDownStyleEnum.cs" />
     <Compile Include="Module\MouseActionEnum.cs" />
     <Compile Include="Module\WinMsgEnum.cs" />
@@ -68,9 +71,6 @@
     <Compile Include="Skin\ColorSkin.cs" />
     <Compile Include="Skin\IconSkin.cs" />
     <Compile Include="UserControls\ComboBoxEx.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\ComboBoxEx1.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\DateTimePickerEx.cs">
@@ -122,6 +122,7 @@
       <DependentUpon>TextBoxEx.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

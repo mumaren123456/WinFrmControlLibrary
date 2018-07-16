@@ -62,8 +62,6 @@
             // 
             // TextBoxEx
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panelBorder);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F);

@@ -6,11 +6,14 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Drawing.Design;
+using System.Web.UI.Design;
 
 namespace ControlLibrary
 {
     [DefaultEvent("TextChanged")]
-    public partial class TextBoxEx : UserControl
+    [DesignerAttribute(typeof(UserControlDesigner))]
+    public partial class TextBoxEx : UserControlEx
     {
         // Fields
         private BorderSkin _borderSkin;
@@ -32,6 +35,11 @@ namespace ControlLibrary
             add { this.txtContent.MouseLeave += value; }
             remove { this.txtContent.MouseLeave -= value; }
         }
+        public new event KeyPressEventHandler KeyPress
+        {
+            add { this.txtContent.KeyPress += value; }
+            remove { this.txtContent.KeyPress -= value; }
+        }
         // Methods
         public TextBoxEx()
         {
@@ -39,10 +47,7 @@ namespace ControlLibrary
             this._borderSkin = new BorderSkin(this);
             this._borderSkin.ColorSkin.NomalColor = this.panelBorder.BorderSkin.ColorSkin.NomalColor = Color.LightGray;
         }
-
          //Properties
-        [Category("自定义"), Description("文本内容框"), Browsable(false)]
-        public TextBox TextContent { get { return txtContent; } }
         [Category("自定义"), Description("边框样式"), Browsable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public BorderSkin BorderSkin { get { return panelBorder.BorderSkin; } }
         [Category("自定义"), Description("指定可以在编辑控件时输入的最大字符数"), Browsable(true)]
@@ -94,15 +99,12 @@ namespace ControlLibrary
             }
         }
         [Category("自定义"), Description("与控件关联的文本"), Browsable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Localizable(true), Editor("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
         public override string Text
         {
             get
             {
-                if (txtContent.Text.Contains("TextBoxEx"))
-                {
-                    txtContent.Text = "";
-                }
-                return this.txtContent.Text; ;
+                return txtContent.Text;
             }
             set
             {
