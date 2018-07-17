@@ -57,7 +57,7 @@ namespace ControlLibrary
             }
         }
 
-        [Category("自定义"), Description("此控件的当前时间.时间值"), Browsable(true)]
+        [Category("自定义"), Description("此控件的当前时间.时间值"), Browsable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DateTime Value
         {
             get
@@ -66,7 +66,7 @@ namespace ControlLibrary
             }
             set
             {
-               datePickerHead.Value = value;
+                datePickerHead.Value = value;
             }
         }
 
