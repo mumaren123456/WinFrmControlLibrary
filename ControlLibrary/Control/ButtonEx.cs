@@ -43,7 +43,6 @@ namespace ControlLibrary
             Graphics g = e.Graphics;
             using (SolidBrush sb = new SolidBrush(this._colorSkin.NomalColor))
             {
-                Console.WriteLine(this.Name + "：" + _maction.ToString());
                 if (_maction == MouseActionEnum.Enter || _maction == MouseActionEnum.Down || (this.BtnPressState && _keepPressColor))
                 {
                     using (Pen pen = new Pen(this._activeBackColor, this.ClientRectangle.Width))
