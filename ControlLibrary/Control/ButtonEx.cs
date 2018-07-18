@@ -21,6 +21,8 @@ namespace ControlLibrary
         private BorderSkin _borderSkin;
         private IconSkin _iconSkin;
         private ColorSkin _colorSkin;
+        private Color _activeBackColor;
+        private bool _btnPressState;
 
         // Methods
         public ButtonEx()
@@ -32,6 +34,7 @@ namespace ControlLibrary
             this._borderSkin = new BorderSkin(this);
             this._iconSkin = new IconSkin(this);
             this._colorSkin = new ColorSkin(this);
+            this._activeBackColor = Color.Transparent;
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -40,8 +43,13 @@ namespace ControlLibrary
             Graphics g = e.Graphics;
             using (SolidBrush sb = new SolidBrush(this._colorSkin.NomalColor))
             {
+                Console.WriteLine(this.Name + "：" + _maction.ToString());
                 if (_maction == MouseActionEnum.Enter || _maction == MouseActionEnum.Down || (this.BtnPressState && _keepPressColor))
                 {
+                    using (Pen pen = new Pen(this._activeBackColor, this.ClientRectangle.Width))
+                    {
+                        g.DrawRectangle(pen, this.ClientRectangle);
+                    }
                     sb.Color = this._colorSkin.ActiveColor;
                     if (this._activeleftLineSize > 0)
                     {
@@ -161,6 +169,30 @@ namespace ControlLibrary
             }
         }
 
-        public bool BtnPressState{get;set;}
+        [Browsable(false)]
+        public bool BtnPressState
+        {
+            get { return _btnPressState; }
+            set
+            {
+                if (_btnPressState != value)
+                {
+                    _btnPressState = value;
+                    this.Invalidate();
+                }
+            }
+        }
+        [Category("自定义"), Description("获取或者设置获取焦点时的背景色"), Browsable(true)]
+        public Color ActiveBackColor
+        {
+            get { return _activeBackColor; }
+            set
+            {
+                if (_activeBackColor != value)
+                {
+                    _activeBackColor = value;
+                }
+            }
+        }
     }
 }
