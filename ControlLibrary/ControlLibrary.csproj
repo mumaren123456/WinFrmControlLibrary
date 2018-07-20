@@ -51,6 +51,9 @@
     <Compile Include="Control\DatePickerHead.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Control\TabControlEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Control\UserControlEx.cs">
       <SubType>UserControl</SubType>
     </Compile>
